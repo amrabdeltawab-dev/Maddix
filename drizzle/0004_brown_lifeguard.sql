@@ -1,0 +1,1 @@
+ALTER TABLE `notifications` DROP INDEX `notifications_event_unique_idx`;

@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --background: #020a17;
+  --foreground: #f5fbff;
+  --card: #09213a;
+  --card-foreground: #f5fbff;
+  --popover: #09213a;
+  --popover-foreground: #f5fbff;
+  --primary: #22d3ee;
+  --primary-foreground: #00111d;
+  --secondary: #102a48;
+  --secondary-foreground: #e3f6ff;
+  --muted: #0d2946;
+  --muted-foreground: #a9c9e4;
+  --accent: #1d568a;
+  --accent-foreground: #effaff;
+  --destructive: #f45b6d;
+  --border: rgba(75, 176, 236, .30);
+  --input: rgba(75, 176, 236, .32);
+  --ring: #22d3ee;
+  --radius: 1rem;
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+}
+
+* { box-sizing: border-box; }
+html { direction: rtl; background: var(--background); }
+body { margin: 0; min-width: 320px; background: radial-gradient(circle at 15% 0%, rgba(13, 92, 170, .18), transparent 31rem), radial-gradient(circle at 100% 100%, rgba(0, 193, 247, .08), transparent 34rem), #020a17; color: var(--foreground); font-family: "Cairo", sans-serif; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+button:active { transform: scale(.98); }
+::selection { background: rgba(18, 199, 244, .35); }
+
+.glass { background: linear-gradient(145deg, rgba(13, 37, 67, .78), rgba(3, 16, 32, .88)); border: 1px solid rgba(50, 154, 229, .25); box-shadow: inset 0 1px rgba(255,255,255,.04), 0 22px 60px rgba(0, 10, 25, .28); backdrop-filter: blur(16px); }
+.glow-border { box-shadow: 0 0 0 1px rgba(18, 199, 244, .18), 0 0 26px rgba(18, 199, 244, .09); }
+.text-gradient { background: linear-gradient(115deg, #fff 5%, #7de8ff 72%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.app-shell { min-height: 100vh; }
+.fade-in { animation: fade-in .45s var(--ease-out) both; }
+.slide-up { animation: slide-up .5s var(--ease-out) both; }
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+@keyframes slide-up { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: translateY(0) } }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #041224; }
+::-webkit-scrollbar-thumb { background: #174a77; border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+
+/* Mobile performance: preserve the glass aesthetic without forcing expensive blur on small GPUs. */
+@media (max-width: 640px) {
+  .glass { backdrop-filter: none; box-shadow: inset 0 1px rgba(255,255,255,.04), 0 12px 30px rgba(0, 10, 25, .24); }
+  .app-shell main { padding-bottom: 1.5rem; }
+  button { min-height: 44px; }
+  input, textarea { font-size: 16px; }
+  .slide-up { animation-duration: .28s; }
+}
+
+@media (min-width: 641px) {
+  .app-shell main { content-visibility: visible; contain-intrinsic-size: auto; }
+}
+
+/* Reference visual system: navy workspace, luminous blue panels, and a fixed desktop rail. */
+.reference-sidebar { background: linear-gradient(180deg, rgba(3,16,34,.98), rgba(2,11,24,.98)); border-color: rgba(51,155,233,.22); }
+.reference-sidebar nav button { min-height: 43px; border: 1px solid transparent; }
+.reference-sidebar nav button:hover { border-color: rgba(34,211,238,.18); box-shadow: 0 0 22px rgba(0,132,255,.08); }
+.reference-sidebar nav button[class*="from-blue"] { border-color: rgba(57,181,255,.28); background: linear-gradient(90deg, rgba(0,107,224,.8), rgba(0,196,240,.52)); }
+.app-shell { background: radial-gradient(circle at 85% 8%, rgba(0,87,198,.18), transparent 30rem), radial-gradient(circle at 20% 80%, rgba(0,178,221,.08), transparent 28rem); }
+.app-shell main { position: relative; }
+.app-shell main > .mx-auto { position: relative; z-index: 1; }
+.app-shell main::before { content: ""; position: fixed; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(65,151,224,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(65,151,224,.025) 1px, transparent 1px); background-size: 46px 46px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
+.app-shell .glass { border-color: rgba(49,157,235,.24); background: linear-gradient(145deg, rgba(9,35,68,.86), rgba(3,16,34,.94)); box-shadow: inset 0 1px rgba(255,255,255,.045), 0 18px 45px rgba(0,8,24,.32); }
+.app-shell header { padding: 10px 0 16px; border-bottom: 1px solid rgba(62,143,212,.12); }
+.app-shell header h1 { letter-spacing: -.02em; }
+.app-shell table tbody tr { transition: background .2s ease; }
+.app-shell table tbody tr:hover { background: rgba(34,164,234,.045); }
+.reference-cart-bar { animation: cart-rise .35s var(--ease-out) both; }
+@keyframes cart-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1023px) { .reference-sidebar { width: min(310px, 88vw); } }
+@media (min-width: 1024px) { .reference-sidebar > div:first-child button { display: none; } }
+@media (min-width: 1024px) {
+  .reference-sidebar { width: 190px; }
+  .app-shell header button[aria-label="فتح القائمة"] { display: none; }
+}
+.reference-sidebar { left: auto; right: 0; border-right: 0; border-left: 1px solid rgba(255,255,255,.1); box-shadow: -18px 0 60px rgba(0,0,0,.35); }
+@media (max-width: 1023px) { .reference-sidebar { transform: translateX(100%); } .reference-sidebar.translate-x-0 { transform: translateX(0); } }
+
+/* Professional right-side navigation drawer */
+.reference-sidebar { left: auto !important; right: 0 !important; width: 290px; border-right: 0; border-left: 1px solid rgba(103,216,255,.16); background: linear-gradient(180deg, rgba(3,18,38,.99), rgba(2,10,23,.99)); }
+.reference-sidebar .sidebar-nav-item.active::before { content: ""; position: absolute; right: -1px; top: 13px; bottom: 13px; width: 3px; border-radius: 99px; background: #67e8f9; box-shadow: 0 0 15px rgba(103,232,249,.9); }
+.reference-sidebar .sidebar-nav-item:not(.active):hover { transform: translateX(-3px); }
+.sidebar-backdrop { z-index: 40; }
+@media (min-width: 1024px) { .reference-sidebar { width: 290px; } .app-shell main { padding-right: 320px; padding-left: 2.5rem; } .app-shell header button[aria-label="فتح القائمة"] { display: none; } }
+@media (max-width: 1023px) { .reference-sidebar { width: min(310px, 88vw); transform: translateX(100%); } .reference-sidebar.translate-x-0 { transform: translateX(0); } }

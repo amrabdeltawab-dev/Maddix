@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1790347048673,
+      "tag": "0000_heavy_siren",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1790347403553,
+      "tag": "0001_massive_living_mummy",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1790570205928,
+      "tag": "0002_dusty_hardball",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1790571697353,
+      "tag": "0003_perpetual_vector",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1790657138112,
+      "tag": "0004_brown_lifeguard",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1790743164704,
+      "tag": "0005_add_order_items_updated_at",
+      "breakpoints": true
+    }
+  ]
+}

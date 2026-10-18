@@ -1,0 +1,1 @@
+ALTER TABLE `notifications` ADD CONSTRAINT `notifications_event_unique_idx` UNIQUE(`recipientId`,`orderId`,`type`);
